@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 9]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="gt-ie8"><!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>responsive nav menu</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+		<style type="text/css">
+        *{box-sizing:border-box}
+        .navbar-inner{padding-bottom: 10px}
+        .nav-ul{width:100%;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display: block;margin: 0;position: relative;font-size: 2.5em;}
+        li{display:inline;white-space:nowrap;padding: 0; margin: 0;line-height: 14px;}
+        .navbar .btn-a{display: inline;line-height: normal;padding: 0 5px;margin: 0 5px;text-align: center;text-transform:uppercase;font-size: 14px;}
+        .active{background-color: #eee}
+        .navbar:focus ul,.navbar:hover ul{white-space: normal;padding-top: 0}
+        .navbar:focus .btn-a,.navbar:hover .btn-a{display: inline-block;}
+        p{padding: 0 10px}
+        </style>
+	</head>
+	<body>
+        <h1>Responsive nav menu</h1>
+        <div class="navbar" tabindex='0'>
+            <div class="navbar-inner">
+                <ul class='nav-ul'>
+                    <li><a href='#1' class='btn-a'>menu item</a></li>
+                    <li><a href='#2' class='btn-a active'>active item</a></li>
+                    <li><a href='#3' class='btn-a'>menu item</a></li>
+                    <li><a href='#4' class='btn-a'>menu item</a></li>
+                    <li><a href='#5' class='btn-a'>menu item</a></li>
+                    <li><a href='#6' class='btn-a'>menu item</a></li>
+                    <li><a href='#7' class='btn-a'>menu item</a></li>
+                    <li><a href='#8' class='btn-a'>menu item</a></li>
+                    <li><a href='#9' class='btn-a'>menu item</a></li>
+                    <li><a href='#10' class='btn-a'>menu item</a></li>
+                    <li><a href='#11' class='btn-a'>menu item</a></li>
+                    <li><a href='#12' class='btn-a'>menu item</a></li>
+                    <li><a href='#13' class='btn-a'>menu item</a></li>
+                    <li><a href='#14' class='btn-a'>menu item</a></li>
+                </ul>
+            </div>
+        </div>
+        <p>The objective is to create a responsive nav menu that uses the browsers native text-overflow:ellipsis capability. This will make for a much more dependable control then one that needs JS to calculate if items do not fit in the width allowed.</p>
+        <p>Items that do not fit are truncated and an ellipsis shows there are more items.</p>
+	</body>
+</html>

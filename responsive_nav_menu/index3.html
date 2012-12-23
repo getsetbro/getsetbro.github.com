@@ -14,37 +14,37 @@
         a:hover{color:#000;text-decoration: underline;}
         .h1{padding: 0 10px;font-size: 22px}
         .p{padding: 0 10px}
-        .navbar{padding:0 20px;border: 1px solid #d4d4d4;border-radius: 4px;outline: none;background: #fff;
+        .navbar{padding:20px;border: 1px solid #d4d4d4;border-radius: 4px;background: #fff;width:100%;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-weight: 700;outline: none;
         background-image: -moz-linear-gradient(top, #ffffff 0%, #f1f1f1 100%); /* FF3.6+ */
         background-image: -webkit-linear-gradient(top, #ffffff 0%,#f1f1f1 100%); /* Chrome10+,Safari5.1+ */
         background-image: -ms-linear-gradient(top, #ffffff 0%,#f1f1f1 100%); /* IE10+ */
         background-image: linear-gradient(to bottom, #ffffff 0%,#f1f1f1 100%); /* W3C */
-        }        
-        .ul{width:100%;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display: block;padding: 0;font-weight: 700;margin:10px 0}
-        .li{display:inline;padding:10px;text-transform: uppercase;white-space:nowrap;font-weight: 400}
-        .navbar:focus .ul{white-space: normal;margin: 0}
-        .navbar:focus .li{display: inline-block;}
+        }
+        .navbar{}
+        .a{display: inline;padding: 15px;text-transform: uppercase;white-space:nowrap;font-weight: 400;}
+        .navbar:focus{white-space: normal;margin-bottom:0 }
+        .navbar:focus .a{display: inline-block;}
         </style>
 	</head>
 	<body>
         <h1 class='h1'>Responsive nav menu</h1>
-        <div class="graygrad navbar" tabindex='0'>
-            <ul class='ul'>
-                <li class='li'><a href='?q=link01'>menu item</a></li>
-                <li class='li'><a href='?q=link02'>menu item</a></li>
-                <li class='li'><a href='?q=link03'>menu item</a></li>
-                <li class='li'><a href='?q=link04'>menu item</a></li>
-                <li class='li'><a href='?q=link05'>menu item</a></li>
-                <li class='li'><a href='?q=link06'>menu item</a></li>
-                <li class='li'><a href='?q=link07'>menu item</a></li>
-                <li class='li'><a href='?q=link08'>menu item</a></li>
-                <li class='li'><a href='?q=link09'>menu item</a></li>
-                <li class='li'><a href='?q=link10'>menu item</a></li>
-                <li class='li'><a href='?q=link11'>menu item</a></li>
-                <li class='li'><a href='?q=link12'>menu item</a></li>
-                <li class='li'><a href='?q=link13'>menu item</a></li>
-                <li class='li'><a href='?q=link14'>menu item</a></li>
-            </ul>
+        <div class="navbar" tabindex='0'>
+            <div class="navbar-inner">
+                <a href='?q=link01' class='a'>menu item</a>
+                <a href='?q=link02' class='a'>menu item</a>
+                <a href='?q=link03' class='a'>menu item</a>
+                <a href='?q=link04' class='a'>menu item</a>
+                <a href='?q=link05' class='a'>menu item</a>
+                <a href='?q=link06' class='a'>menu item</a>
+                <a href='?q=link07' class='a'>menu item</a>
+                <a href='?q=link08' class='a'>menu item</a>
+                <a href='?q=link09' class='a'>menu item</a>
+                <a href='?q=link10' class='a'>menu item</a>
+                <a href='?q=link11' class='a'>menu item</a>
+                <a href='?q=link12' class='a'>menu item</a>
+                <a href='?q=link13' class='a'>menu item</a>
+                <a href='?q=link14' class='a'>menu item</a>
+            </div>
         </div>
         <p class='p'>The objective is to create a responsive nav menu that uses the browsers native text-overflow:ellipsis capability. This will make for a much more dependable control then one that needs JS to calculate if items do not fit in the width allowed.</p>
         <p class='p'>Items that do not fit are truncated and an ellipsis shows there are more items. The ::focus pseudo selector is used to open the nav on the FOCUS and BLUR events.</p>

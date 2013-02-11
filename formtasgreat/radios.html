@@ -12,8 +12,8 @@
     <style type="text/css">
     body{font-family:arial, sans-serif;margin:0;background-color: #eee;font-size: 12px;color:#444;padding:22px 55px;}
     input,button{color:#444;}
-    .myform-container{}
-    .myform{}
+    .myform-container{width:320px;height:55px;}
+    .myform{float: right}
     .myform{position: relative;height:32px;border:1px solid #999;border-radius: 3px;display: inline-block;background-color: #fff;}
     .myform, .myform *{box-sizing:border-box;}
     .myform-icon, .myform-input, .myform-reset, .myform-submit{display: inline-block;vertical-align:top;height: 30px;line-height: 30px;margin:0;padding:0;margin-left: -5px;border:0 none;background-color: transparent;}
@@ -61,24 +61,27 @@
     <h4>Form</h4>
     <div class="myform-container">
       <form class="myform" action="">
-        <span class="myform-icon companies properties contacts"><i class="ico icon-briefcase"></i><i class="ico icon-building"></i><i class="ico icon-user"></i>&#x25BC;</span>
+        <span class="myform-icon companies"><i class="ico icon-briefcase"></i><i class="ico icon-building"></i><i class="ico icon-user"></i>&#x25BC;</span>
         <input class="myform-input" type="text" placeholder="Search...">
         <i class="myform-reset">×</i>
         <button class="myform-submit" type="submit"><i class="ico icon-search"></i></button>
         <fieldset class="myform-dropdown">
-          <label><input type="checkbox" checked value="companies"/> <i class="ico icon-briefcase"></i> Companies</label></li>
-          <label><input type="checkbox" checked value="properties"/> <i class="ico icon-building"></i> Properties</label>
-          <label><input type="checkbox" checked value="contacts"/> <i class="ico icon-user"></i> Contacts</label>
+          <label><input type="radio" name="searchfilter" value="companies" checked/> <i class="ico icon-briefcase"></i> Companies</label></li>
+          <label><input type="radio" name="searchfilter" value="properties"/> <i class="ico icon-building"></i> Properties</label>
+          <label><input type="radio" name="searchfilter" value="contacts"/> <i class="ico icon-user"></i> Contacts</label>
         </fieldset>
       </form>
     </div>
     <h4>Searches:</h4>
     <ol class='ol'></ol>
+    <ol class='ol2'></ol>
     <script src="jquery-191.min.js"></script>
     <script src="jquery-ui-1.9.2.custom.min.js"></script>
     <script>
     "use strict";
     var myapp = {
+      query:null,
+      submit_val:null,
       myform_form:{
         el:$('.myform'),
         open_dropdown:function(){
@@ -120,16 +123,13 @@
       myform_submit:{
         el:$('.myform-submit')
       },
-      myform_checkedArr:[],
+      myform_checked:null,
       myform_getChecked:function(){
-        myapp.myform_checkedArr=[];
-        myapp.myform_dropdown.el.find(':checked').each(function(){
-          myapp.myform_checkedArr.push( $(this).val() );
-        });
+        this.myform_checked = myapp.myform_dropdown.el.find(':checked').val();
       },
       myform_dropdown:{
         el:$('.myform-dropdown'),
-        chx:$('.myform-dropdown').find('[type="checkbox"]'),
+        chx:$('.myform-dropdown').find('[type="radio"]'),
         resetme:function(){
           this.chx.prop('checked',true);
         }
@@ -166,7 +166,7 @@
         myapp.myform_dropdown.chx.change(function(e){
           myapp.myform_input.el.focus();
           myapp.myform_getChecked();
-          $('.myform-icon').attr('class', 'myform-icon ' + myapp.myform_checkedArr.join(' ') );
+          $('.myform-icon').attr('class', 'myform-icon ' + myapp.myform_checked);
         });
 
         myapp.myform_reset.el.click(function(){
@@ -175,17 +175,17 @@
 
         //submit
         myapp.myform_form.el.submit(function(e){
-            e.preventDefault();
-            //get checked array
-            myapp.myform_getChecked();
-            if(myapp.myform_checkedArr.length && myapp.myform_input.el.val() !== ''){
-              $('.ol').append('<li>search in ' + myapp.myform_checkedArr.join(' + ') + ' for ' + myapp.myform_input.el.val() + '</li>');
-              myapp.myform_softreset();
-            }else{
-              $('.ol').prepend('<li><b>please include text and at least one filter<b></li>');
-              myapp.myform_form.open_dropdown();
-            }
-          });
+          e.preventDefault();
+          myapp.myform_getChecked();
+          myapp.query = (myapp.submit_val) ? myapp.submit_val : myapp.myform_input.el.val();
+          if(myapp.myform_input.el.val() !== ''){
+            $('.ol').append('<li>search in ' + myapp.myform_checked + ' for ' + myapp.query + '</li>');
+            myapp.myform_softreset();
+          }else{
+            $('.ol2').append('<li><b>please include text<b></li>');
+          }
+          myapp.submit_val = null;
+        });
         //focus
         $('body').click(function(){
           myapp.myform_form.lose_focus();
@@ -203,7 +203,8 @@
     $('.myform-input').autocomplete({
       source:tempTags,
       select: function (e, ui) {
-        $(e.target).closest('form').submit();
+        myapp.submit_val = ui.item.value;
+        myapp.myform_form.el.submit();
       }
     });
     </script>

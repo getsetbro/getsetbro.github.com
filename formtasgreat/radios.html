@@ -37,10 +37,10 @@
 
     .visible-on{visibility:visible;}
 
-.myform-icon .ico{display: none}
-.companies .icon-briefcase,
-.properties .icon-building,
-.contacts .icon-user{display: inline-block;}
+    .myform-icon .ico{display: none}
+    .companies .icon-briefcase,
+    .properties .icon-building,
+    .contacts .icon-user{display: inline-block;}
     </style>
   </head>
   <body>
@@ -53,8 +53,8 @@
       <li>Filters selection</li>
       <li>Submits with Enter key</li>
       <li>Click on body removes focus on form</li>
-      <li>Filter dropdown does confict with autocomplete plugin</li>
-      <li>Shows the current filter(s) icons</li>
+      <li>No confict with autocomplete</li>
+      <li>Shows the current filter icons</li>
       <li>Expand during focus / collapse on blur and submit</li>
     </ul>
     </fieldset>
@@ -79,9 +79,10 @@
     <script src="jquery-ui-1.9.2.custom.min.js"></script>
     <script>
     "use strict";
+
+    var tempTags = ["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
+
     var myapp = {
-      query:null,
-      submit_val:null,
       myform_form:{
         el:$('.myform'),
         open_dropdown:function(){
@@ -103,7 +104,11 @@
         }
       },
       myform_icon:{
-        el:$('.myform-icon')
+        el:$('.myform-icon'),
+        setme:function(){
+          myapp.myform_getChecked();
+          $('.myform-icon').attr('class', 'myform-icon ' + myapp.myform_checked);
+        }
       },
       myform_input:{
         el:$('.myform-input'),
@@ -131,7 +136,8 @@
         el:$('.myform-dropdown'),
         chx:$('.myform-dropdown').find('[type="radio"]'),
         resetme:function(){
-          this.chx.prop('checked',true);
+          this.chx.prop('checked',false).filter("[name=searchfilter]:first").prop('checked', true);
+          myapp.myform_icon.setme();
         }
       },
       myform_hardreset:function(){
@@ -142,18 +148,15 @@
         myapp.myform_submit.el.blur();
         myapp.myform_form.lose_focus();
       },
-      myform_softreset:function(){
+      myform_blur:function(){
         myapp.myform_form.close_dropdown();
         myapp.myform_input.el.blur();
         myapp.myform_submit.el.blur();
       },
-      init:function(){
-
+      bindings:function(){
         myapp.myform_icon.el.click(function(){
           myapp.myform_form.toggle_dropdown();
         });
-
-
         myapp.myform_input.el.mouseup(function(){
           myapp.myform_form.get_focus();
         }).keyup(function(e){
@@ -165,26 +168,11 @@
 
         myapp.myform_dropdown.chx.change(function(e){
           myapp.myform_input.el.focus();
-          myapp.myform_getChecked();
-          $('.myform-icon').attr('class', 'myform-icon ' + myapp.myform_checked);
+          myapp.myform_icon.setme();
         });
 
         myapp.myform_reset.el.click(function(){
           myapp.myform_hardreset();
-        });
-
-        //submit
-        myapp.myform_form.el.submit(function(e){
-          e.preventDefault();
-          myapp.myform_getChecked();
-          myapp.query = (myapp.submit_val) ? myapp.submit_val : myapp.myform_input.el.val();
-          if(myapp.myform_input.el.val() !== ''){
-            $('.ol').append('<li>search in ' + myapp.myform_checked + ' for ' + myapp.query + '</li>');
-            myapp.myform_softreset();
-          }else{
-            $('.ol2').append('<li><b>please include text<b></li>');
-          }
-          myapp.submit_val = null;
         });
         //focus
         $('body').click(function(){
@@ -193,20 +181,43 @@
         myapp.myform_form.el.click(function(e){
           e.stopPropagation();
         });
+      },
+      search_val:null,
+      autocomplete_val:null,
+      submitting:function(){
+        //submit
+        myapp.myform_form.el.submit(function(e){
+          e.preventDefault();
+          myapp.myform_getChecked();
+          myapp.search_val = (myapp.autocomplete_val) ? myapp.autocomplete_val : myapp.myform_input.el.val();
+          if(myapp.myform_input.el.val() !== ''){
+            $('.ol').append('<li>search in ' + myapp.myform_checked + ' for ' + myapp.search_val + '</li>');
+            $('.ol2').empty();
+            myapp.myform_blur();
+          }else{
+            $('.ol2').append('<li><b>please include text<b></li>');
+            myapp.myform_input.el.focus();            
+          }
+          myapp.autocomplete_val = null;
+        });
+        //jqui
+        $('.myform-input').autocomplete({
+          source:tempTags,
+          select: function (e, ui) {
+            myapp.autocomplete_val = ui.item.value;
+            myapp.myform_form.el.submit();
+          }
+        });
 
-      }//end init
+      },
+      init:function(){
+        myapp.bindings();
+        myapp.submitting();
+      }
     };
 
     myapp.init();
 
-    var tempTags = ["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
-    $('.myform-input').autocomplete({
-      source:tempTags,
-      select: function (e, ui) {
-        myapp.submit_val = ui.item.value;
-        myapp.myform_form.el.submit();
-      }
-    });
     </script>
   </body>
 </html>

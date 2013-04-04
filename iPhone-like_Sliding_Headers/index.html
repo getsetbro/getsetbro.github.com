@@ -63,27 +63,27 @@
 <script type="text/javascript">
     // 1. grab a bunch of variables
     var $container = $('.box');
-    var $headers = $container.find('.section');
+    var $sections = $container.find('.section');
     var containerTop = $container.offset().top + parseInt($container.css('marginTop')) + parseInt($container.css('borderTopWidth'));
     
     // 3. bind a scroll event and change the text of the take heading
     $container.scroll(function () {
-        $headers.each(function () {
-            var $header = $(this);
-            var top = $header.offset().top;
-            var height = $header.height();
+        $sections.each(function () {
+            var $sections = $(this);
+            var top = $sections.offset().top;
+            var height = $sections.height();
             var bottom = top + height - 47;
             
             if (top < containerTop) {
-                $header.addClass('scrolling-off');
+                $sections.addClass('scrolling-off');
             }else{
-                $header.removeClass('scrolling-off');
+                $sections.removeClass('scrolling-off');
             }
 
             if (bottom < containerTop) {
-                $header.addClass('scrolled-off');
+                $sections.addClass('scrolled-off');
             }else{
-                $header.removeClass('scrolled-off');
+                $sections.removeClass('scrolled-off');
             }
         });
     });

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Header Slide</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Header Slide</title>
 	<style type="text/css" media="screen">
 		#box {
 		margin: 0 auto;
@@ -26,10 +27,10 @@
 
 		.p{padding: 55px 15px 15px}
 		.section{position: relative;}
-		.section h2{position: absolute;right:0;left:0;}
+		.section h2{position: absolute;right:0;left:0}
 
-		.scrolling-off{position: static;}
-		.scrolling-off h2{right:17px;top:0;}
+		.scrolling-off{position: static}
+		.scrolling-off h2{top:0}
 
 		.scrolled-off{position: relative;}
 		.scrolled-off h2{right: 0;top:auto;bottom: 0}
@@ -61,12 +62,10 @@
   	</div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
-    // 1. grab a bunch of variables
     var $container = $('.box');
     var $sections = $container.find('.section');
     var containerTop = $container.offset().top + parseInt($container.css('marginTop')) + parseInt($container.css('borderTopWidth'));
     
-    // 3. bind a scroll event and change the text of the take heading
     $container.scroll(function () {
         $sections.each(function () {
             var $sections = $(this);

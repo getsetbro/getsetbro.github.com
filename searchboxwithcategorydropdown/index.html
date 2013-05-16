@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+</body>
+</html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8"/>
+    <title>o_O</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.9.2.custom.css">
+    <link rel="stylesheet" type="text/css" href="fontello2.css">
+    <style type="text/css">
+    body{font-family:arial, sans-serif;margin:0;background-color: #eee;font-size: 12px;color:#444;padding:22px 55px;}
+    input,button{color:#444;}
+    .myform-container{}
+    .myform{}
+    .myform{position: relative;height:32px;border:1px solid #999;border-radius: 3px;display: inline-block;background-color: #fff;}
+    .myform, .myform *{box-sizing:border-box;}
+    .myform-icon, .myform-input, .myform-reset, .myform-submit{display: inline-block;vertical-align:top;height: 30px;line-height: 30px;margin:0;padding:0;margin-left: -5px;border:0 none;background-color: transparent;}
+    .myform-icon{margin-left:0;text-align: center;border-right:1px solid #999;cursor: pointer;padding: 0 3px 0 5px}
+    .myform-icon:hover{background-color: #bbb;}
+    .open-dropdown .myform-icon{background-color: #555;color:#fff;}
+    .myform-input{outline:none;padding:0 0 0 7px;-webkit-transition: width .25s;transition: width .25s;width:99px;}
+    .has-focus .myform-input{width:222px;}
+    .myform-reset{border-left: 0 none;text-align: center;color:#fff;;background-color: #999;border-radius: 2em;height: 20px;line-height: 20px;font-style: normal;margin: 5px 4px 0 -3px;padding:0 6px;cursor: pointer;visibility:hidden}
+    .myform-reset:hover{background-color: #555}
+    .myform-submit{width: 30px;border-left:1px solid #999;cursor: pointer;padding: 0 3px;outline:none;}
+    .myform-submit .ico{font-size: 18px}
+    .myform-submit:hover{background-color: #bbb;}
+    .myform-submit:active,.myform-submit:focus{background-color: #555;color:#fff;}
+
+    .myform-dropdown{position: absolute;top:31px;left:2px;right:2px;margin: 0;padding: 1px 0 2px;display: none;border: 1px solid #999;border-top: 0 none;border-radius: 0 0 3px 3px;background-color: #fff;}
+    .open-dropdown .myform-dropdown{display: block;}
+    .myform-dropdown label{display: block;line-height: 18px;}
+    .myform-dropdown input{margin:0 5px;display: inline-block;vertical-align: middle}
+    .myform-dropdown .ico{ line-height: inherit;}
+
+    .visible-on{visibility:visible;}
+
+.myform-icon .ico{display: none}
+.companies .icon-briefcase,
+.properties .icon-building,
+.contacts .icon-user{display: inline-block;}
+    </style>
+  </head>
+  <body>
+    <h1>Search form</h1>
+    <fieldset><legend>Requirements:</legend>
+    <ul>
+      <li>Intuitive position of elements</li>
+      <li>A reset button clears the form - reveals when search text is empty</li>
+      <li>GO button</li>
+      <li>Filters selection</li>
+      <li>Submits with Enter key</li>
+      <li>Click on body removes focus on form</li>
+      <li>Filter dropdown does confict with autocomplete plugin</li>
+      <li>Shows the current filter(s) icons</li>
+      <li>Expand during focus / collapse on blur and submit</li>
+    </ul>
+    </fieldset>
+    <h4>Form</h4>
+    <div class="myform-container">
+      <form class="myform" action="">
+        <span class="myform-icon companies properties contacts"><i class="ico icon-briefcase"></i><i class="ico icon-building"></i><i class="ico icon-user"></i>&#x25BC;</span>
+        <input class="myform-input" type="text" placeholder="Search...">
+        <i class="myform-reset">×</i>
+        <button class="myform-submit" type="submit"><i class="ico icon-search"></i></button>
+        <fieldset class="myform-dropdown">
+          <label><input type="checkbox" checked value="companies"/> <i class="ico icon-briefcase"></i> Companies</label></li>
+          <label><input type="checkbox" checked value="properties"/> <i class="ico icon-building"></i> Properties</label>
+          <label><input type="checkbox" checked value="contacts"/> <i class="ico icon-user"></i> Contacts</label>
+        </fieldset>
+      </form>
+    </div>
+    <h4>Searches:</h4>
+    <ol class='ol'></ol>
+    <script src="jquery-191.min.js"></script>
+    <script src="jquery-ui-1.9.2.custom.min.js"></script>
+    <script>
+    "use strict";
+    var myapp = {
+      myform_form:{
+        el:$('.myform'),
+        open_dropdown:function(){
+          this.el.addClass('open-dropdown');
+        },
+        close_dropdown:function(){
+          this.el.removeClass('open-dropdown');
+        },
+        toggle_dropdown:function(){
+          this.el.toggleClass('open-dropdown');
+        },
+        get_focus:function(){
+          this.open_dropdown();
+          this.el.addClass('has-focus');
+        },
+        lose_focus:function(){
+          this.close_dropdown();
+          this.el.removeClass('has-focus');
+        }
+      },
+      myform_icon:{
+        el:$('.myform-icon')
+      },
+      myform_input:{
+        el:$('.myform-input'),
+        resetme:function(){
+          this.el.val('');
+        }
+      },
+      myform_reset:{
+        el:$('.myform-reset'),
+        visible_on:function(){
+          this.el.addClass('visible-on');
+        },
+        visible_off:function(){
+          this.el.removeClass('visible-on');
+        }
+      },
+      myform_submit:{
+        el:$('.myform-submit')
+      },
+      myform_checkedArr:[],
+      myform_getChecked:function(){
+        myapp.myform_checkedArr=[];
+        myapp.myform_dropdown.el.find(':checked').each(function(){
+          myapp.myform_checkedArr.push( $(this).val() );
+        });
+      },
+      myform_dropdown:{
+        el:$('.myform-dropdown'),
+        chx:$('.myform-dropdown').find('[type="checkbox"]'),
+        resetme:function(){
+          this.chx.prop('checked',true);
+        }
+      },
+      myform_hardreset:function(){
+        myapp.myform_input.resetme();
+        myapp.myform_reset.visible_off();
+        myapp.myform_dropdown.resetme();
+        myapp.myform_input.el.blur();
+        myapp.myform_submit.el.blur();
+        myapp.myform_form.lose_focus();
+      },
+      myform_softreset:function(){
+        myapp.myform_form.close_dropdown();
+        myapp.myform_input.el.blur();
+        myapp.myform_submit.el.blur();
+      },
+      init:function(){
+
+        myapp.myform_icon.el.click(function(){
+          myapp.myform_form.toggle_dropdown();
+        });
+
+
+        myapp.myform_input.el.mouseup(function(){
+          myapp.myform_form.get_focus();
+        }).keyup(function(e){
+          if(e.which !== 13){
+            myapp.myform_form.close_dropdown();
+          }
+          (myapp.myform_input.el.val() !== "") ? myapp.myform_reset.visible_on() : myapp.myform_reset.visible_off();
+        });
+
+        myapp.myform_dropdown.chx.change(function(e){
+          myapp.myform_input.el.focus();
+          myapp.myform_getChecked();
+          $('.myform-icon').attr('class', 'myform-icon ' + myapp.myform_checkedArr.join(' ') );
+        });
+
+        myapp.myform_reset.el.click(function(){
+          myapp.myform_hardreset();
+        });
+
+        //submit
+        myapp.myform_form.el.submit(function(e){
+            e.preventDefault();
+            //get checked array
+            myapp.myform_getChecked();
+            if(myapp.myform_checkedArr.length && myapp.myform_input.el.val() !== ''){
+              $('.ol').append('<li>search in ' + myapp.myform_checkedArr.join(' + ') + ' for ' + myapp.myform_input.el.val() + '</li>');
+              myapp.myform_softreset();
+            }else{
+              $('.ol').prepend('<li><b>please include text and at least one filter<b></li>');
+              myapp.myform_form.open_dropdown();
+            }
+          });
+        //focus
+        $('body').click(function(){
+          myapp.myform_form.lose_focus();
+        });
+        myapp.myform_form.el.click(function(e){
+          e.stopPropagation();
+        });
+
+      }//end init
+    };
+
+    myapp.init();
+
+    var tempTags = ["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
+    $('.myform-input').autocomplete({
+      source:tempTags,
+      select: function (e, ui) {
+        $(e.target).closest('form').submit();
+      }
+    });
+    </script>
+  </body>
+</html>

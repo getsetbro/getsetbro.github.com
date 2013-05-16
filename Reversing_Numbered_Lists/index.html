@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Reversing Numbered Lists</title>
+        <style type="text/css">
+            body{margin:auto;width:77%}
+            .reverse{list-style: none outside none;margin:0;padding:0;visibility: hidden;}
+            .reversed{visibility: visible;}
+            .reversed > *:before{counter-increment:section -1;content:counter(section)".";margin-right:9px;}
+        </style>
+    </head>
+    <body>
+        <h2>The polyfill works on an ordered list with a class of "reverse"</h2>
+        <ol class="reverse">
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+        </ol>
+        <h2>The polyfill works on any list with class of "reverse"</h2>
+        <dl class="reverse">
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+            <dt>item</dt>
+        </dl>
+        <h2>&copy;footer 2012</h2>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript">
+        //find each element with a class of reverse
+        $('.reverse').each(function(){
+            //get the amount of children and prepare the CSS secton property
+            var children="section "+$(this).children().length;
+            //set the CSS style on the element
+            $(this).css('counter-reset',children)
+            //add class "reversed" to the list so that the CSS is applied after the inline style
+            .addClass('reversed');
+        });
+        </script>
+    </body>
+</html>

@@ -2,7 +2,8 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 7, ../sass/screen.scss */
+
+@import "compass";
 * {
   margin: 0;
   padding: 0;
@@ -10,38 +11,26 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-/* line 14, ../sass/screen.scss */
 ::-moz-selection {
   background: #444;
   color: #fff;
   text-shadow: none;
 }
-
-/* line 19, ../sass/screen.scss */
 ::selection {
   background: #444;
   color: #fff;
   text-shadow: none;
 }
-
-/* line 24, ../sass/screen.scss */
 a {
   color: #333;
 }
-
-/* line 27, ../sass/screen.scss */
 li {
   list-style: none;
 }
-
-/* line 30, ../sass/screen.scss */
 html {
   font-size: 10px;
   min-width: 300px;
 }
-
-/* line 34, ../sass/screen.scss */
 body {
   border-top: 4px solid #333;
   background-color: #fff;
@@ -53,7 +42,6 @@ body {
   text-align: center;
 }
 
-/* line 45, ../sass/screen.scss */
 .button {
   background-color: #444;
   display: inline-block;
@@ -65,39 +53,29 @@ body {
   -webkit-border-radius: 4px;
   border-radius: 4px;
   -ms-transition: background-color 0.2s, color 0.2s;
-  -webkit-transition: background-color 0.2s, color 0.2s;
-  -moz-transition: background-color 0.2s, color 0.2s;
-  -o-transition: background-color 0.2s, color 0.2s;
-  transition: background-color 0.2s, color 0.2s;
+  @include transition(background-color 0.2s, color 0.2s);
   text-decoration: none;
   position: relative;
   top: 0.2rem;
 }
-
-/* line 61, ../sass/screen.scss */
 .button:hover {
   background-color: #ddd;
   color: #666;
 }
-
-/* line 65, ../sass/screen.scss */
 .button:active {
   top: 0.3rem;
 }
 
-/* line 69, ../sass/screen.scss */
 section {
   margin: 2rem 0;
   padding: 2rem;
   overflow: hidden;
 }
 
-/* line 75, ../sass/screen.scss */
 #demos {
   margin-top: 0;
 }
 
-/* line 79, ../sass/screen.scss */
 .demo {
   display: block;
   max-width: 80rem;
@@ -107,8 +85,6 @@ section {
   margin: 0 auto;
   margin-bottom: 2rem;
 }
-
-/* line 88, ../sass/screen.scss */
 .label {
   background-color: #f8f8f8;
   color: #999;
@@ -122,7 +98,6 @@ section {
   position: relative;
 }
 
-/* line 101, ../sass/screen.scss */
 .demo3 {
   text-transform: uppercase;
   background-color: #444;
@@ -131,30 +106,21 @@ section {
   font-size: 6rem;
   padding: 2rem;
 }
-
-/* line 109, ../sass/screen.scss */
 .demo3 h3 {
   font-weight: 100;
 }
 
 @media only screen and (max-width: 900px), only screen and (max-device-width: 480px) {
-  /* line 114, ../sass/screen.scss */
   html {
     font-size: 9px;
   }
-
-  /* line 117, ../sass/screen.scss */
   .logo {
     width: 100%;
     font-size: 9rem;
   }
-
-  /* line 121, ../sass/screen.scss */
   .demo {
     width: 90%;
   }
-
-  /* line 124, ../sass/screen.scss */
   #features li {
     font-size: 1.7rem;
     width: 100%;
@@ -163,13 +129,11 @@ section {
   }
 }
 @media only screen and (max-width: 780px) {
-  /* line 132, ../sass/screen.scss */
   #menu {
     display: none;
   }
 }
 @media only screen and (max-device-width: 480px) {
-  /* line 137, ../sass/screen.scss */
   .oridomi-content {
     -webkit-transition: none !important;
     -moz-transition: none !important;
@@ -179,7 +143,6 @@ section {
   }
 }
 @media only screen and (min-width: 970px) {
-  /* line 146, ../sass/screen.scss */
   #demos li {
     width: 35%;
     display: inline-block;

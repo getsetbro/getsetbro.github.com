@@ -1,3 +1,3 @@
-http://getsetbro.github.com
+http://getsetbro.github.io
 
-<a href="http://getsetbro.github.com">http://getsetbro.github.com</a>
+<a href="http://getsetbro.github.io">http://getsetbro.github.io</a>

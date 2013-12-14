@@ -30,7 +30,7 @@ html {
 }
 
 /* line 28, ../sass/screen.scss */
-article {
+#unsupported {
   font-size: 2rem;
   display: none;
 }

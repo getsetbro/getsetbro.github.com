@@ -3,13 +3,7 @@
 
  @import "compass";
 
- * {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+
 ::-moz-selection {
   background: #444;
   color: #fff;
@@ -25,11 +19,15 @@ html {
   font-size: 10px;
   min-width: 300px;
 }
-#unsupported{
-  font-size: 2rem;
-  display: none;
+html  * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
+
   background-color: #fff;
   color: #333;
   margin: 0 auto;
@@ -43,7 +41,7 @@ body {
   background-color: #444;
   display: inline-block;
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 14px;
   font-weight: bold;
   padding: 0.8rem;
   cursor: pointer;
@@ -80,7 +78,7 @@ section {
   font-family: monospace;
   display: inline-block;
   padding: 1rem;
-  font-size: 1.3rem;
+  font-size: 14px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   width: 20rem;
@@ -99,24 +97,14 @@ section {
   font-weight: 100;
 }
 
-@media only screen and (max-width: 900px), only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 480px) {
   html {
-    font-size: 9px;
+    font-size: 7px;
   }
 
   .demo {
     width: 90%;
   }
 
-}
-
-@media only screen and (max-device-width: 480px) {
-  .oridomi-content {
-    -webkit-transition: none !important;
-    -moz-transition: none !important;
-    -o-transition: none !important;
-    -ms-transition: none !important;
-    transition: none !important;
-  }
 }
 

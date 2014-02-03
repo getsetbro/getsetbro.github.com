@@ -6,6 +6,7 @@
     demo = new OriDomi(".demo3",
       vPanels: 9
       ripple: true
+      shading: false
     )
     methods = ["accordion", "fracture", "stairs", "twist"]
     setTimeout (->

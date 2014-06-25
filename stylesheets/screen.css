@@ -89,13 +89,12 @@ section {
   display: inline-block;
   padding: 1rem;
   font-size: 14px;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   width: 20rem;
   position: relative;
 }
 
-/* line 88, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 .demo3 {
   text-transform: uppercase;
   background-color: #444;
@@ -105,19 +104,34 @@ section {
   padding: 2rem;
 }
 
-/* line 96, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 .demo3 h3 {
   font-weight: 100;
 }
 
 @media only screen and (max-width: 480px) {
-  /* line 101, ../sass/screen.scss */
+  /* line 100, ../sass/screen.scss */
   html {
     font-size: 7px;
   }
 
-  /* line 105, ../sass/screen.scss */
+  /* line 104, ../sass/screen.scss */
   .demo {
     width: 90%;
   }
+}
+/* line 110, ../sass/screen.scss */
+footer {
+  margin: 1rem;
+  padding: 1rem;
+}
+/* line 114, ../sass/screen.scss */
+footer a {
+  font-size: 14px;
+  font-family: monospace;
+  color: #999;
+}
+/* line 118, ../sass/screen.scss */
+footer a:hover {
+  color: #fe57a1;
 }

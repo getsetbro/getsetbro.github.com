@@ -1,3 +1,7 @@
+# Robots.txt file for http://getsetbro.com
+# Disallow: /*/private/
+# Allow: /files/*/private/
+
 User-agent: *
 
 Sitemap: http://getsetbro.com/sitemap.xml

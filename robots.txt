@@ -1,0 +1,5 @@
+User-agent: *
+
+Disallow: /_private
+
+Sitemap: http://getsetbro.com/sitemap.xml

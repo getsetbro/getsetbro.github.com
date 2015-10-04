@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
- <!-- <url><loc>http://getsetbro.com/doesmybrowsersupportwebp/</loc><changefreq>weekly</changefreq></url> -->
+<url><loc>http://getsetbro.com/</loc><lastmod>2015-10-04</lastmod></url>
+<url><loc>http://getsetbro.com/about/</loc><lastmod>2015-10-04</lastmod></url>
+<url><loc>http://getsetbro.com/doesmybrowsersupportwebp/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/Boundarized/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/mytube/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/d3tree/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/iPhone-like_Sliding_Headers/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/responsive_nav_menu/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/Pane_Freeze/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/Reversing_Numbered_Lists/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/searchboxwithcategorydropdown/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/timepicker/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/therobot/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/weekend/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/scripts/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/offCanvas/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/marvelappgifs/</loc><changefreq>monthly</changefreq></url>
+<url><loc>http://getsetbro.com/offCanvas/</loc><changefreq>monthly</changefreq></url>
 </urlset>

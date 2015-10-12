@@ -3,5 +3,4 @@
 # Allow: /files/*/private/
 
 User-agent: *
-
 Sitemap: http://getsetbro.com/sitemap.xml

@@ -18,3 +18,4 @@ section { margin: 1rem 0; padding: 2rem; }
 footer { margin: 1rem; padding: 1rem; }
 footer a { font-size: 14px; font-family: monospace; color: #999; }
 footer a:hover { color: #fe57a1; }
+h1{font-weight: normal; font-size: 10px; display: inline}

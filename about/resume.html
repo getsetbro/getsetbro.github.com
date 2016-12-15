@@ -6,17 +6,26 @@
   <meta name="viewport" content="width=device-width"/>
   <title>Seth Broweleit</title>
 <style>
-* {
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+html {
+    font-size: 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+*,::after,::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit
+}
+@-ms-viewport {
+    width: device-width
 }
 body{
-  color:#555;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: #373a3c;
+  background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1;
-  font-size: 100%;
   vertical-align: baseline;
   margin:0;
 }
@@ -44,7 +53,12 @@ text-rendering: optimizeLegibility;
 }
 h1 {font-size: 3em;}
 h2 {font-size: 2em;}
-h3 {font-size: 1.75em; color:#999; text-align: right;font-family: sans-serif;}
+h3 {
+  font-size: 1.75em;
+  color:#999;
+  text-align: right;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
 h4 {font-size: 1.5em; margin-top: 15px}
 strong, small {
   text-transform: uppercase;
@@ -78,7 +92,9 @@ a:hover{
     margin-bottom: 20px
   }
 
-
+  dd{
+    margin: 20px 0;
+  }
 }
 
     </style>
@@ -89,8 +105,8 @@ a:hover{
   <div><small>(630) 802-9619</small></div>
   <dl>
     <dd><strong>Specialties:</strong> HTML5, CSS3, Responsive UI, JavaScript, Photoshop, Animation, Bootstrap, AngularJS</dd>
-    <dd><strong>Experience:</strong> Mobile, SVG, D3.js, Sass, GreenSock, Grunt, Pattern Lab, Handlebars, RequireJS</dd>
-    <dd><strong>Interests:</strong> Accessibility, Data Visualization, <a href="//blog.getsetbro.com/prototype-driven-development.html">Prototype Driven Development</a></dd>
+    <dd><strong>Experience:</strong> Mobile, SVG, D3.js, Sass, GreenSock, Grunt, Pattern Lab, Handlebars, RequireJS, Sketch</dd>
+    <dd><strong>Interests:</strong> RWD, Accessibility, Data Visualization, <a href="//blog.getsetbro.com/prototype-driven-development.html">Prototype Driven Development</a></dd>
   </dl>
   <hr>
   <h3>Experience</h3>

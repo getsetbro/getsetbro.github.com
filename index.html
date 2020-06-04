@@ -1,35 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
 
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="getsetbro thing on github; The Official thing of Seth Broweleit | a UI developer / UI coder"
-  />
-  <meta name="theme-color" content="#231e1e" />
+  <meta name="description"
+    content="getsetbro thing on github; The Official thing of Seth Broweleit | a UI developer / UI coder">
+  <meta name="theme-color" content="#231e1e">
   <title>getsetbro thing</title>
   <!--<meta name="author" content="humans.txt"/>-->
-  <style>
-    h1 {
-      text-align: center
+  <link rel="stylesheet" href="files/screen.css">
+  <style type="text/css">
+    .oridomi-active {
+      background-color: transparent !important;
+      background-image: none !important;
+      -webkit-box-sizing: border-box !important;
+      border: none !important;
+      outline: none !important;
+      padding: 0 !important;
+      position: relative;
+      -webkit-transform-style: preserve-3d !important;
+      -webkit-mask: none !important;
+    }
+
+    .oridomi-clone {
+      margin: 0 !important;
+      -webkit-box-sizing: border-box !important;
+      overflow: hidden !important;
+      display: block !important;
+    }
+
+    .oridomi-holder {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      -webkit-transform-style: preserve-3d;
+    }
+
+    .oridomi-stage {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      -webkit-transform: translate3d(-9999px, 0, 0);
+      margin: 0;
+      padding: 0;
+      -webkit-transform-style: preserve-3d;
+    }
+
+    .oridomi-stage-left {
+      -webkit-perspective-origin: 0% 50%;
+    }
+
+    .oridomi-stage-right {
+      -webkit-perspective-origin: 100% 50%;
+    }
+
+    .oridomi-stage-top {
+      -webkit-perspective-origin: 50% 0%;
+    }
+
+    .oridomi-stage-bottom {
+      -webkit-perspective-origin: 50% 100%;
+    }
+
+    .oridomi-shader {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      -webkit-transition-property: opacity;
+    }
+
+    .oridomi-shader-left {
+      background: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);
+    }
+
+    .oridomi-shader-right {
+      background: -webkit-linear-gradient(right, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);
+    }
+
+    .oridomi-shader-top {
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);
+    }
+
+    .oridomi-shader-bottom {
+      background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);
+    }
+
+    .oridomi-content {
+      margin: 0 !important;
+      position: relative !important;
+      float: none !important;
+      -webkit-box-sizing: border-box !important;
+      overflow: hidden !important;
+    }
+
+    .oridomi-mask {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      outline: 1px solid transparent;
+    }
+
+    .oridomi-panel {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      position: relative;
+      -webkit-transition-property: -webkit-transform;
+      -webkit-transform-origin: left;
+      -webkit-transform-style: preserve-3d;
+    }
+
+    .oridomi-panel-h {
+      -webkit-transform-origin: top;
+    }
+
+    .oridomi-stage-right .oridomi-panel {
+      -webkit-transform-origin: right;
+    }
+
+    .oridomi-stage-bottom .oridomi-panel {
+      -webkit-transform-origin: bottom;
     }
   </style>
 </head>
 
 <body>
-  <h1>getsetbro</h1>
+  <section id="demos">
+    <div class="demo demo3">
+      <h3>getsetbro<br>ui dev</h3>
+    </div>
+  </section>
+  <div class="controls">
+    <div class="label">Random</div>
+    <div class="button" id="fold">fold</div>
+  </div>
+  <footer>
+    <a href="/about/" target="_blank">About me</a>
+  </footer>
+  <div>&copy; <h1>getsetbro</h1>
+  </div>
+  <script src="files/oridomi.js"></script>
+  <script src="files/demo.js"></script>
   <script>
     (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments);
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m);
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments);
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-25407259-1', 'getsetbro.com');
     ga('send', 'pageview');

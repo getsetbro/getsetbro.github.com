@@ -2,7 +2,7 @@
 ::selection { background: #444; color: #fff; text-shadow: none; }
 html { font-size: 10px; min-width: 300px; }
 html * { margin: 0; padding: 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-body { background: #fff url("//web.archive.org/web/20171009033725im_/http://getsetbro.com/images/png/bgrepeat.png"); color: #333; margin: 0 auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; text-align: center; }
+body { background: #fff url('/images/png/bgrepeat.png'); color: #333; margin: 0 auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; text-align: center; }
 .button { background-color: #444; display: inline-block; color: #fff; font-size: 14px; font-weight: bold; padding: 0.8rem; cursor: pointer; -webkit-border-radius: 4px; border-radius: 4px; -ms-transition: background-color 0.2s, color 0.2s; transition: background-color 0.2s, color 0.2s; text-decoration: none; position: relative; top: 0.2rem; }
 .button:hover { background-color: #ddd; color: #666; }
 section { margin: 1rem 0; padding: 2rem; }
@@ -10,7 +10,6 @@ section { margin: 1rem 0; padding: 2rem; }
 .label { background-color: #f8f8f8; color: #999; font-family: monospace; display: inline-block; padding: 1rem; font-size: 14px; border-radius: 3px; width: 20rem; position: relative; }
 .demo3 { text-transform: uppercase; background-color: #444; border: 1.5rem solid #fe57a1; color: #fe57a1; font-size: 6rem; padding: 2rem; }
 .demo3 h3 { font-weight: 100; }
-
 @media only screen and (max-width: 480px) {
   html { font-size: 7px; }
   .demo { width: 90%; }
@@ -19,24 +18,3 @@ footer { margin: 1rem; padding: 1rem; }
 footer a { font-size: 14px; font-family: monospace; color: #999; }
 footer a:hover { color: #fe57a1; }
 h1{font-weight: normal; font-size: 10px; display: inline}
-/*
-     FILE ARCHIVED ON 03:37:25 Oct 09, 2017 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 19:15:10 Jun 04, 2020.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-/*
-playback timings (ms):
-  CDXLines.iter: 17.076 (3)
-  load_resource: 398.149 (2)
-  PetaboxLoader3.datanode: 979.454 (5)
-  RedisCDXSource: 25.185
-  PetaboxLoader3.resolve: 144.889 (2)
-  LoadShardBlock: 902.543 (3)
-  exclusion.robots: 0.169
-  esindex: 0.018
-  exclusion.robots.policy: 0.157
-  captures_list: 949.205
-*/
